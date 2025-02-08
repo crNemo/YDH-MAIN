@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+
+
+body {
+    background-color: #f0f4f8; /* Light gray background */
+}
+.nav-item {
+    position: relative;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: normal;
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.nav-item::before,
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    background-color: #007bff; /* Change to your desired primary color */
+    transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+    transform: scaleX(0);
+}
+
+.nav-item::before {
+    top: 0;
+    transform-origin: left;
+}
+
+.nav-item::after {
+    bottom: 0;
+    transform-origin: right;
+}
+
+.nav-item:hover::before,
+.nav-item:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-item-active {
+    font-weight: bold;
+    color: #007bff; /* Change to your desired primary color */
+}
+.nav-item-icon {
+  width: 24px; /* Ensure consistent icon size */
+  height: 24px; /* Ensure consistent icon size */
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotating-logo {
+    animation: rotate 10s linear infinite;
+  }
+
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.50s ease-out;
+}
+
+
+*{
+    font-family: Outfit;
+}
+
+.active hr{
+    @apply block
+}
+
+@theme{
+    --color-primary: #6667AB;
+    
+}
+::-webkit-scrollbar{
+    @apply hidden
+}
+@layer utilities {
+    .grid-cols-auto {
+      @apply grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    @media (max-width: 740px) {
+        .active p{
+            @apply text-white bg-primary
+        }
+    }
+  }
+
